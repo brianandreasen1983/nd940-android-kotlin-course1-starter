@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">ShoeStore</string>
+    <string name="sign_in">Sign In</string>
+    <string name="password_hint">Password1234</string>
+    <string name="email_hint">example@gmail.com</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="existing_account_text">Already have a Shoe Store account?</string>
+    <string name="new_user_account">New to the Shoe Store?</string>
+    <string name="email_address_label_text">Email</string>
+    <string name="password_label_text">Password</string>
+    <string name="instructions_button_text">Instructions</string>
+    <string name="shoe_name_label_text">Shoe Name</string>
+    <string name="shoe_name_text">Enter shoe name</string>
+    <string name="company_text">Company</string>
+    <string name="company_hint">Enter company name</string>
+    <string name="shoe_size_label_text">Shoe Size</string>
+    <string name="shoe_size_hint">Enter shoe size</string>
+    <string name="shoe_desc_label">Shoe Description</string>
+    <string name="shoe_description_hint">Enter shoe description</string>
+    <string name="add_shoe_button_text">Add Shoe</string>
+    <string name="cancel_button_text">Cancel</string>
+    <string name="fab">Add</string>
+    <string name="welcome_text_one">Welcome to the Shoe Store app!</string>
+    <string name="welcome_text_two">The Shoe Store is dedicated to helping you manage shoes in a way that is familiar such as a to do list style application. Our goal is make this as easy as possible please continue to the next screen to view the instructions on how to use the application.</string>
+    <string name="shoe_listing_button_text">Shoe Listing</string>
 </resources>
