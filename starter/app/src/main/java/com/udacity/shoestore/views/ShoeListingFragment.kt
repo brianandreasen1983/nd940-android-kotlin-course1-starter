@@ -16,12 +16,10 @@ import com.udacity.shoestore.databinding.ShoeListingFragmentBinding
 import com.udacity.shoestore.viewmodels.ShoeViewModel
 
 class ShoeListingFragment : Fragment() {
-    private lateinit var binding: ShoeListingFragmentBinding
-    private lateinit var viewModel: ShoeViewModel
     // Shared Data Model
     // See the following documentation here: https://developer.android.com/topic/libraries/architecture/viewmodel#sharing
-    private val model: ShoeViewModel by activityViewModels()
-
+    private val viewModel: ShoeViewModel by activityViewModels()
+    private lateinit var binding: ShoeListingFragmentBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(
@@ -31,7 +29,6 @@ class ShoeListingFragment : Fragment() {
                 false
         )
 
-        viewModel = ViewModelProvider(this).get(ShoeViewModel::class.java)
         binding.shoeViewModel = viewModel
         binding.lifecycleOwner = this
 
@@ -49,13 +46,15 @@ class ShoeListingFragment : Fragment() {
 //            }
 //        })
 
-        model.shoeList.observe(this, Observer {shoeList ->
-            if(shoeList.isNotEmpty()) {
-                print("Joy!")
-            } else {
-                print("No joy")
-            }
-        })
+//        viewModel.shoeList.observe(viewLifecycleOwner, Observer {shoeList ->
+//            // TODO: Construct a UI and inflate it.
+//              // TODO: Test this afterwards
+//            shoeList.forEach { shoe ->
+//                val shoeBinding: ShoeViewBinding = DataBindingUtil.inflate(inflate, R.layout., container, false)
+//                shoeBinding.shoe
+//                binding.linearList.addView(shoeBinding.root)
+//            }
+//        })
 
         // Sets the action bar items.
         setHasOptionsMenu(true)

@@ -29,7 +29,7 @@
             android:ems="10"
             android:hint="@string/shoe_name_text"
             android:inputType="textPersonName"
-            android:text="@{shoeViewModel.shoe.name}" />
+            android:text="@={shoeViewModel.shoe.name}" />
 
         <TextView
             android:id="@+id/company_label_text"
@@ -46,7 +46,7 @@
             android:ems="10"
             android:hint="@string/company_hint"
             android:inputType="textPersonName"
-            android:text="@{shoeViewModel.shoe.company}" />
+            android:text="@={shoeViewModel.shoe.company}" />
 
         <TextView
             android:id="@+id/shoe_desc_label"
@@ -63,7 +63,7 @@
             android:ems="10"
             android:hint="@string/shoe_description_hint"
             android:inputType="textPersonName"
-            android:text="@{shoeViewModel.shoe.description}" />
+            android:text="@={shoeViewModel.shoe.description}" />
 
         <TextView
             android:id="@+id/shoe_size_label"
@@ -72,7 +72,6 @@
             android:layout_marginTop="28dp"
             android:text="@string/shoe_size_label_text" />
 
-        <!-- TODO: Not data bound yet having issues binding to Double-->
         <EditText
             android:id="@+id/et_shoe_size"
             android:layout_width="295dp"
@@ -80,7 +79,7 @@
             android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="@string/shoe_size_hint"
-            android:text="@{shoeViewModel.shoe.size}"
+            android:text="@={shoeViewModel.shoe.size}"
             android:inputType="number" />
 
         <!-- ADD Shoe should be on the left-->
@@ -88,6 +87,7 @@
             android:id="@+id/add_shoe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="@{() -> shoeViewModel.addShoe()}"
             android:text="@string/add_shoe_button_text" />
 
         <!-- Cancel should be on the right-->

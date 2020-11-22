@@ -19,11 +19,12 @@ import com.udacity.shoestore.viewmodels.ShoeViewModel
 import kotlinx.android.synthetic.main.shoe_detail_fragment.view.*
 
 class ShoeDetailFragment : Fragment() {
-    private lateinit var binding: ShoeDetailFragmentBinding
-    private lateinit var viewModel: ShoeViewModel
     // Shared Data Model
     // See the following documentation here: https://developer.android.com/topic/libraries/architecture/viewmodel#sharing
-    private val model: ShoeViewModel by activityViewModels()
+    private val viewModel: ShoeViewModel by activityViewModels()
+    private lateinit var binding: ShoeDetailFragmentBinding
+
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(
@@ -33,27 +34,22 @@ class ShoeDetailFragment : Fragment() {
                 false
         )
 
-        viewModel = ViewModelProvider(this).get(ShoeViewModel::class.java)
         binding.shoeViewModel = viewModel
         binding.lifecycleOwner = this
 
-        // Intent is to navigate back to the shoe listing fragment.
         binding.cancelButton.setOnClickListener {
             findNavController().navigate(R.id.shoeListingFragment)
         }
 
-        // Requirement is conflicting where if it is added then to navigate to the shoe list.
-        binding.addShoe.setOnClickListener {
-            var shoe = Shoe(
-                    binding.etShoeName.text.toString(),
-                    binding.etShoeSize.text.toString(),
-                    binding.etCompanyName.text.toString(),
-                    binding.etShoeDescription.text.toString()
-            )
-
-            viewModel.addShoe(shoe)
-             findNavController().navigate(R.id.shoeListingFragment)
-        }
+        // Observe the shoeList and if a new shoe has been added to the list then navigate back to the ui
+        // Need to determine if the model or ViewModel shoudl be observed.
+        // viewModel works, model does not.
+        // FATAL ERROR on navigation.
+        viewModel.shoeList.observe(viewLifecycleOwner, Observer { shoeList ->
+            if (shoeList.isNotEmpty()){
+                findNavController().navigate(R.id.shoeListingFragment)
+            }
+        })
 
         return binding.root
     }
