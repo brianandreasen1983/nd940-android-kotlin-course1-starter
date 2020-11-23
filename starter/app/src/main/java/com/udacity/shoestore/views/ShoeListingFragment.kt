@@ -13,7 +13,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.ShoeListingFragmentBinding
+import com.udacity.shoestore.models.Shoe
 import com.udacity.shoestore.viewmodels.ShoeViewModel
+import kotlinx.android.synthetic.main.shoe_view.*
 
 class ShoeListingFragment : Fragment() {
     // Shared Data Model
@@ -37,21 +39,15 @@ class ShoeListingFragment : Fragment() {
         }
 
         // Loop through each of the observed items in the shoeList and inflate the layout
-        viewModel.shoeList.observe(viewLifecycleOwner, Observer {shoeList ->
+        // BUG: When looping through the list it is just replacing the text view text to bind to.....
+        viewModel.shoeList.observe(viewLifecycleOwner, Observer { shoeList ->
             shoeList.forEach { shoe ->
-                val shoeBinding: ShoeListingFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.shoe_listing_fragment, container, false)
-                // TODO: Solve this problem as this will solve the issue of binding specifically.
-                 shoeBinding.shoeViewModel.shoe = shoe
-
-                // Works as concept definitely not ok for production or expected as we want it.
-//                binding.shoeNameText.text = "Wow"
-//                binding.shoeCompanyText.text = "Wow"
-//                binding.shoeDescriptionText.text= "Wow"
-//                binding.shoeSizeText.text = "15"
+                binding.shoeNameText.text = shoe.name
+                binding.shoeDescriptionText.text = shoe.description
+                binding.shoeCompanyText.text= shoe.company
+                binding.shoeSizeText.text = shoe.size
             }
         })
-
-
 
         // Sets the action bar items.
         setHasOptionsMenu(true)

@@ -10,8 +10,8 @@ class ShoeViewModel : ViewModel() {
     private val _shoe = MutableLiveData<Shoe>()
     val shoe: LiveData<Shoe> get() = _shoe
 
-    private val _shoeList = MutableLiveData<MutableList<Shoe>>()
-    val shoeList: LiveData<MutableList<Shoe>> get() = _shoeList
+    private val _shoeList = MutableLiveData<List<Shoe>>()
+    val shoeList: LiveData<List<Shoe>> get() = _shoeList
 
     private val _canReturnToShoeList = MutableLiveData<Boolean>()
     val canReturnToShoeList: LiveData<Boolean> get() = _canReturnToShoeList
@@ -29,7 +29,7 @@ class ShoeViewModel : ViewModel() {
         _shoes.value?.add(shoe.value!!)
         _shoeList.value = _shoes.value
         _canReturnToShoeList.value = true
-        resetAddShoeForm()
+//        resetAddShoeForm()
     }
 
     // Used to reset the shoe list navigation after being observe to true.
@@ -48,6 +48,6 @@ class ShoeViewModel : ViewModel() {
 
     // Clear Shoes function is used to clear the shoes from the shoes list
     fun clearShoes() {
-        _shoeList.value?.clear()
+        _shoes.value?.clear()
     }
 }
