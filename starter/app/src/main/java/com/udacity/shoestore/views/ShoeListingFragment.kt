@@ -47,11 +47,11 @@ class ShoeListingFragment : Fragment() {
                 val shoeDescriptionTextView: TextView = view.findViewById(R.id.tv_shoe_description)
 
                 shoeNameTextView.text = shoe.name
-                shoeSizeTextView.text = shoe.size
+                shoeSizeTextView.text = shoe.size.toString()
                 shoeCompanyTextView.text = shoe.company
                 shoeDescriptionTextView.text = shoe.description
 
-                 linearLayout.addView(view)
+                linearLayout.addView(view)
             }
         })
 

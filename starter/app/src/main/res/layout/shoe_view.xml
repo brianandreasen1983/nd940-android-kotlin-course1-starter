@@ -21,7 +21,8 @@
             android:id="@+id/tv_shoe_size"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@={shoeViewModel.shoe.size}" />
+            android:inputType="numberDecimal"
+            android:text="@{Double.toString(shoeViewModel.shoe.size)}" />
 
         <TextView
             android:id="@+id/tv_shoe_company"

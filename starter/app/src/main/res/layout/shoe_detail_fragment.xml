@@ -79,8 +79,8 @@
             android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="@string/shoe_size_hint"
-            android:text="@={shoeViewModel.shoe.size}"
-            android:inputType="number" />
+            android:text="@{Double.toString(shoeViewModel.shoe.size)}"
+            android:inputType="numberDecimal" />
 
         <LinearLayout
             android:layout_width="match_parent"

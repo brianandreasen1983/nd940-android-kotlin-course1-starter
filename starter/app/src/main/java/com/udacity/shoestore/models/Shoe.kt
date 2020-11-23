@@ -5,7 +5,7 @@ import kotlinx.android.parcel.Parcelize
 // TODO: Size should be in double
 @Parcelize
 data class Shoe(var name: String,
-                var size: String,
+                var size: Double,
                 var company: String,
                 var description: String,
                 val images: List<String> = mutableListOf()) : Parcelable

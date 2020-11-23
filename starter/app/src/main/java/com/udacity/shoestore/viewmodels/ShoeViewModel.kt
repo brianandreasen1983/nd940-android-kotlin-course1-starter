@@ -19,7 +19,7 @@ class ShoeViewModel : ViewModel() {
     // Used to initialize the shoe, shoes and returnToShoeList variables for when the view first loads.
     // After the initialized values have been assigned they will need to be reset programmatically by the developer.
     init {
-        _shoe.value = Shoe("", "", "", "")
+        _shoe.value = Shoe("", 0.0, "", "")
         _shoes.value = mutableListOf()
         _canReturnToShoeList.value = false
     }
@@ -41,7 +41,7 @@ class ShoeViewModel : ViewModel() {
     // If this is not done then the values are retained.
     private fun resetAddShoeForm() {
         _shoe.value?.name = ""
-        _shoe.value?.size = ""
+        _shoe.value?.size = 0.0
         _shoe.value?.company = ""
         _shoe.value?.description = ""
     }
