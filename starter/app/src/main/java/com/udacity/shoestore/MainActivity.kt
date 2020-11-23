@@ -49,4 +49,9 @@ class MainActivity : AppCompatActivity() {
         Timber.plant(Timber.DebugTree())
     }
 
+    // This is where we need to make navigation handle when up is pressed otherwise nothing will happen.
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = this.findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp()
+    }
 }
