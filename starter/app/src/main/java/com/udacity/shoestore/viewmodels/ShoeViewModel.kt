@@ -29,12 +29,12 @@ class ShoeViewModel : ViewModel() {
         _shoes.value?.add(shoe.value!!)
         _shoeList.value = _shoes.value
         _canReturnToShoeList.value = true
-//        resetAddShoeForm()
     }
 
     // Used to reset the shoe list navigation after being observe to true.
     fun resetCanReturnToShoeList() {
         _canReturnToShoeList.value = false
+        resetAddShoeForm()
     }
 
     // Helper function to clear and reset the AddShoeForm

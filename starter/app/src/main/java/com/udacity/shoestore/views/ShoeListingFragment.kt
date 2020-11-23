@@ -38,7 +38,7 @@ class ShoeListingFragment : Fragment() {
             findNavController().navigate(ShoeListingFragmentDirections.actionShoeListingFragmentToShoeDetailFragment())
         }
 
-        // Need a different layout to inflate? and add into the view programmatially?
+        // TODO: Need a different layout to inflate? and add into the view programmatially?
         viewModel.shoeList.observe(viewLifecycleOwner, Observer { shoeList ->
             shoeList.forEach { shoe ->
                 binding.shoeNameText.text = shoe.name
