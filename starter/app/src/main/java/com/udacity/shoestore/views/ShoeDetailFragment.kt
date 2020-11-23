@@ -43,7 +43,9 @@ class ShoeDetailFragment : Fragment() {
 
         viewModel.canReturnToShoeList.observe(viewLifecycleOwner, Observer {
             if (it) {
-                findNavController().navigate(R.id.shoeListingFragment)
+                // Pretty sure this is what is causing the adapter to be called again.
+//                findNavController().navigate(R.id.shoeListingFragment)
+                findNavController().navigateUp()
             }
         })
 

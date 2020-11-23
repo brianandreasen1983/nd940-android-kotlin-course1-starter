@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.R
+import com.udacity.shoestore.adapters.ShoeAdapter
 import com.udacity.shoestore.databinding.ShoeListingFragmentBinding
 import com.udacity.shoestore.models.Shoe
 import com.udacity.shoestore.viewmodels.ShoeViewModel
@@ -38,15 +39,15 @@ class ShoeListingFragment : Fragment() {
             findNavController().navigate(ShoeListingFragmentDirections.actionShoeListingFragmentToShoeDetailFragment())
         }
 
-        // TODO: Need a different layout to inflate? and add into the view programmatially?
-        // TODO: Change shoe.size back to Double.
-        // Double.toString() inside of the UI for edit text doesn't work for two way bind.
+        // Repeatedly gets called would like to know why....
+        // Hunch is that it is something to do with navigation....or shared data model...
+        // Data is initially added to it but it is replaced with an empty shoe before it can be displayed.
+        val adapter = ShoeAdapter()
+        binding.shoeList.adapter = adapter
+
         viewModel.shoeList.observe(viewLifecycleOwner, Observer { shoeList ->
-            shoeList.forEach { shoe ->
-                binding.shoeNameText.text = shoe.name
-                binding.shoeDescriptionText.text = shoe.description
-                binding.shoeCompanyText.text= shoe.company
-                binding.shoeSizeText.text = shoe.size
+            shoeList?.let {
+                adapter.data = shoeList
             }
         })
 
