@@ -34,17 +34,11 @@ class MainActivity : AppCompatActivity() {
         val host: NavHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment? ?: return
 
-        // Set up Action Bar
         val navController = host.navController
 
         appBarConfiguration = AppBarConfiguration(navController.graph)
 
         setupActionBarWithNavController(navController, appBarConfiguration)
-
-//        val model: ShoeViewModel by viewModels()
-//        model.shoes.observe(this, Observer<List<Shoe>>{ shoes ->
-//            // TODO: Update the UI?
-//        })
 
         Timber.plant(Timber.DebugTree())
     }

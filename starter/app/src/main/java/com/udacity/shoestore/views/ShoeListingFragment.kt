@@ -2,21 +2,19 @@ package com.udacity.shoestore.views
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.R
-import com.udacity.shoestore.adapters.ShoeAdapter
 import com.udacity.shoestore.databinding.ShoeListingFragmentBinding
-import com.udacity.shoestore.models.Shoe
 import com.udacity.shoestore.viewmodels.ShoeViewModel
-import kotlinx.android.synthetic.main.shoe_view.*
+
 
 class ShoeListingFragment : Fragment() {
     // Shared Data Model
@@ -39,15 +37,21 @@ class ShoeListingFragment : Fragment() {
             findNavController().navigate(ShoeListingFragmentDirections.actionShoeListingFragmentToShoeDetailFragment())
         }
 
-        // Repeatedly gets called would like to know why....
-        // Hunch is that it is something to do with navigation....or shared data model...
-        // Data is initially added to it but it is replaced with an empty shoe before it can be displayed.
-        val adapter = ShoeAdapter()
-        binding.shoeList.adapter = adapter
-
         viewModel.shoeList.observe(viewLifecycleOwner, Observer { shoeList ->
-            shoeList?.let {
-                adapter.data = shoeList
+            var linearLayout: LinearLayout = binding.shoeLayout.findViewById(R.id.shoe_layout)
+            shoeList.forEach { shoe ->
+                val view: View = layoutInflater.inflate(R.layout.shoe_view, null)
+                val shoeNameTextView: TextView = view.findViewById(R.id.tv_shoe_name)
+                val shoeSizeTextView: TextView = view.findViewById(R.id.tv_shoe_size)
+                val shoeCompanyTextView: TextView = view.findViewById(R.id.tv_shoe_company)
+                val shoeDescriptionTextView: TextView = view.findViewById(R.id.tv_shoe_description)
+
+                shoeNameTextView.text = shoe.name
+                shoeSizeTextView.text = shoe.size
+                shoeCompanyTextView.text = shoe.company
+                shoeDescriptionTextView.text = shoe.description
+
+                 linearLayout.addView(view)
             }
         })
 

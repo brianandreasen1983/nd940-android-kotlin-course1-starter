@@ -6,31 +6,33 @@
             type="com.udacity.shoestore.viewmodels.ShoeViewModel" />
     </data>
     <LinearLayout
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:id="@+id/shoe_list"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/shoe_name_text"
+            android:id="@+id/tv_shoe_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@={shoeViewModel.shoe.name}" />
 
         <TextView
-            android:id="@+id/shoe_size_text"
+            android:id="@+id/tv_shoe_size"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@={shoeViewModel.shoe.size}" />
 
         <TextView
-            android:id="@+id/shoe_company_text"
+            android:id="@+id/tv_shoe_company"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@={shoeViewModel.shoe.company}" />
 
         <TextView
-            android:id="@+id/shoe_description_text"
+            android:id="@+id/tv_shoe_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@={shoeViewModel.shoe.description}" />
     </LinearLayout>
 </layout>
