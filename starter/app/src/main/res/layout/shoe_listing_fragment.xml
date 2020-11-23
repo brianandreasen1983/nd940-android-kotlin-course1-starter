@@ -9,19 +9,50 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true">
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:src="@drawable/ic_add"
-                android:contentDescription="@string/fab"
-                android:layout_margin="16dp" />
-<!--            <LinearLayout-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="vertical">-->
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:gravity="center">
 
-<!--            </LinearLayout>-->
+                <TextView
+                    android:id="@+id/shoe_name_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{shoeViewModel.shoe.name}"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/shoe_size_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{shoeViewModel.shoe.size}"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/shoe_company_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{shoeViewModel.shoe.company}"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/shoe_description_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{shoeViewModel.shoe.description}"
+                    android:textAlignment="center" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:src="@drawable/ic_add"
+                    android:contentDescription="@string/fab"
+                    android:layout_margin="16dp" />
+            </LinearLayout>
         </ScrollView>
 </layout>

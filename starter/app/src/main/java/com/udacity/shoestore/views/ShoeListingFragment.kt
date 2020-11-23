@@ -46,15 +46,24 @@ class ShoeListingFragment : Fragment() {
 //            }
 //        })
 
-//        viewModel.shoeList.observe(viewLifecycleOwner, Observer {shoeList ->
-//            // TODO: Construct a UI and inflate it.
-//              // TODO: Test this afterwards
-//            shoeList.forEach { shoe ->
-//                val shoeBinding: ShoeViewBinding = DataBindingUtil.inflate(inflate, R.layout., container, false)
-//                shoeBinding.shoe
-//                binding.linearList.addView(shoeBinding.root)
-//            }
-//        })
+
+        // Loop through each of the observed items in the shoeList and inflate the layout
+        viewModel.shoeList.observe(viewLifecycleOwner, Observer {shoeList ->
+            shoeList.forEach { shoe ->
+                val shoeBinding: ShoeListingFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.shoe_listing_fragment, container, false)
+                // TODO: Solve this problem as this will solve the issue of binding specifically.
+                // Incompatible data type
+                // shoeBinding.shoeViewModel.shoe = shoe
+
+                // Works as concept definitely not ok for production or expected as we want it haha
+                binding.shoeNameText.text = "Wow"
+                binding.shoeCompanyText.text = "Wow"
+                binding.shoeDescriptionText.text= "Wow"
+                binding.shoeSizeText.text = "15"
+            }
+        })
+
+
 
         // Sets the action bar items.
         setHasOptionsMenu(true)
@@ -70,6 +79,7 @@ class ShoeListingFragment : Fragment() {
     // Provides the ability to navigate.
     // Id's must match
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        viewModel.clearShoes()
         return NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
                 || super.onOptionsItemSelected(item)
     }

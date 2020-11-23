@@ -38,19 +38,21 @@ class ShoeDetailFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.cancelButton.setOnClickListener {
-            findNavController().navigate(R.id.shoeListingFragment)
+            findNavController().navigateUp()
         }
 
-        // Observe the shoeList and if a new shoe has been added to the list then navigate back to the ui
-        // Need to determine if the model or ViewModel shoudl be observed.
-        // viewModel works, model does not.
-        // FATAL ERROR on navigation.
-        viewModel.shoeList.observe(viewLifecycleOwner, Observer { shoeList ->
-            if (shoeList.isNotEmpty()){
+        viewModel.canReturnToShoeList.observe(viewLifecycleOwner, Observer {
+            if (it) {
                 findNavController().navigate(R.id.shoeListingFragment)
             }
         })
 
         return binding.root
+    }
+
+    // Used to
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewModel.resetCanReturnToShoeList()
     }
 }
