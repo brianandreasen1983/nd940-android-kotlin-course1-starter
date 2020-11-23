@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Constraint layout was used to have some more flexibility in the UI than what you get with Linear Layout-->
+<!-- Using linear layout is just fine as well just wanted to experiment more with Constraint Layout-->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
