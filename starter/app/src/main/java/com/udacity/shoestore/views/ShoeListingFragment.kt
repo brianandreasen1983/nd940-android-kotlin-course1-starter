@@ -39,6 +39,8 @@ class ShoeListingFragment : Fragment() {
         }
 
         // TODO: Need a different layout to inflate? and add into the view programmatially?
+        // TODO: Change shoe.size back to Double.
+        // Double.toString() inside of the UI for edit text doesn't work for two way bind.
         viewModel.shoeList.observe(viewLifecycleOwner, Observer { shoeList ->
             shoeList.forEach { shoe ->
                 binding.shoeNameText.text = shoe.name
