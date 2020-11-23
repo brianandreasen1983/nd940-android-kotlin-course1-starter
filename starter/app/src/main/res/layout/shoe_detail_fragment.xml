@@ -82,20 +82,22 @@
             android:text="@={shoeViewModel.shoe.size}"
             android:inputType="number" />
 
-        <!-- ADD Shoe should be on the left-->
-        <Button
-            android:id="@+id/add_shoe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> shoeViewModel.addShoe()}"
-            android:text="@string/add_shoe_button_text" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/add_shoe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> shoeViewModel.addShoe()}"
+                android:text="@string/add_shoe_button_text" />
 
-        <!-- Cancel should be on the right-->
-        <Button
-            android:id="@+id/cancel_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/cancel_button_text" />
-
+            <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel_button_text" />
+        </LinearLayout>
     </LinearLayout>
 </layout>
