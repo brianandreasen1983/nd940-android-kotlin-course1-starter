@@ -38,8 +38,7 @@ class ShoeListingFragment : Fragment() {
             findNavController().navigate(ShoeListingFragmentDirections.actionShoeListingFragmentToShoeDetailFragment())
         }
 
-        // Loop through each of the observed items in the shoeList and inflate the layout
-        // BUG: When looping through the list it is just replacing the text view text to bind to.....
+        // Need a different layout to inflate? and add into the view programmatially?
         viewModel.shoeList.observe(viewLifecycleOwner, Observer { shoeList ->
             shoeList.forEach { shoe ->
                 binding.shoeNameText.text = shoe.name
