@@ -41,7 +41,7 @@ class ShoeListingFragment : Fragment() {
             shoeList.forEach { shoe ->
                 val shoeBinding: ShoeListingFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.shoe_listing_fragment, container, false)
                 // TODO: Solve this problem as this will solve the issue of binding specifically.
-//                 shoeBinding.shoeViewModel.shoe = shoe
+                 shoeBinding.shoeViewModel.shoe = shoe
 
                 // Works as concept definitely not ok for production or expected as we want it.
 //                binding.shoeNameText.text = "Wow"
